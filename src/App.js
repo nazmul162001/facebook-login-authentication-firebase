@@ -40,6 +40,7 @@ function App() {
       event.stopPropagation();
       return;
     }
+    // regex
     setValidated(true);
 
     // stop form reload
@@ -123,7 +124,8 @@ function App() {
           <Form.Group className="mb-3" controlId="formBasicName">
             <Form.Label>Name</Form.Label>
             <Form.Control
-              onBlur={handleName}
+              onChange={handleName}
+              value = {name}
               type="text"
               placeholder="Enter your name"
               required
@@ -134,9 +136,10 @@ function App() {
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
-            onBlur={handleEmail}
+            onChange={handleEmail}
             type="email"
             placeholder="Enter email"
+            value = {email}
             required
           />
           {/* Validation  */}
@@ -148,9 +151,10 @@ function App() {
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
-            onBlur={handlePassword}
+            onChange={handlePassword}
             type="password"
             placeholder="Password"
+            value = {password}
             required
           />
           {/* Validation  */}
