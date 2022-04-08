@@ -5,6 +5,10 @@ import { useState } from 'react';
 import { createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
 import app from './Firebase/Firebase.init';
 
+// react toast 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const auth = getAuth(app)
 
@@ -35,9 +39,10 @@ function App() {
         setEmail('')
         setPassword('')
         setName('')
+        toast('Sign up successful')
       })
       .catch(error => {
-        console.error('error', error);
+        toast.error('already signUp, please login!')
       })
     }
     else{
@@ -49,11 +54,13 @@ function App() {
         setEmail('')
         setPassword('')
         setName('')
+        toast('login successful')
       })
       .catch(error => {
-        console.error('error', error)
+        toast.error('You are already login')
       })
     }
+    <ToastContainer />
   }
 
   // get user name (update profice)
@@ -93,6 +100,7 @@ function App() {
     setName(event.target.value);
   }
 
+
   return (
     <div className="mx-auto w-50 mt-5">
       <Form onSubmit={handleFormSubmit}>
@@ -121,6 +129,7 @@ function App() {
           Login with Facebook
         </Button>
       </Form>
+    <ToastContainer />
     </div>
   );
 }
